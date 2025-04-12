@@ -3,7 +3,7 @@ import pytest
 from src.main import Product, Category
 
 def test_prod_init(first_prod, second_prod):
-    """Тест на наличие корректных атрибутов"""
+    """Тест на определение наличия корректных атрибутов"""
     assert first_prod.name == "Микроволновка"
     assert first_prod.description == "Микроволновая печь, предназначенная для подогрева пищи"
     assert first_prod.price == 26000
