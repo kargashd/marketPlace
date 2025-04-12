@@ -24,7 +24,7 @@ class Category:
     product_count = 0
 
     def __init__(self, name, description, products):
-        """Метод для инициализации категории. Задаем значение атрибутам категории товара"""
+        """Метод для инициализации категории, задаем значение атрибутам категории товара"""
         self.name = name
         self.description = description
         self.products = products
