@@ -19,7 +19,7 @@ class Category:
 
     name: str
     description: str
-    products: list
+    __products: list
     category_count = 0
     product_count = 0
 
@@ -27,6 +27,21 @@ class Category:
         """Метод для инициализации категории, задаем значение атрибутам категории товара"""
         self.name = name
         self.description = description
-        self.products = products
+        self.__products = products
         Category.category_count += 1
         Category.product_count += len(products)
+
+
+
+    def add_products(self, product: Product):
+        """Добавляет товар Product в приватный список __product"""
+        if not isinstance(product, Product):
+            raise TypeError("Можно добавлять только объекты из Product")
+        self.__products.append(product)
+        Category.product_count += 1
+
+
+
+
+
+
