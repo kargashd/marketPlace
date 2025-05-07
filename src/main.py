@@ -1,3 +1,6 @@
+from colorama.ansi import clear_screen
+
+
 class Product:
     """Класс, содержащий в себе информацию о товаре"""
 
@@ -10,8 +13,24 @@ class Product:
         """Метод для инициализации экземпляра класса. Задаем значение атрибутам экземпляра товара"""
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
+
+
+    @classmethod
+    def new_product(cls, product_store: dict) -> 'Product':
+        """Класс-метод для создания товара из словаря с параметрами класса Product"""
+        try:
+            return cls(
+                name=str(product_store['name']),
+                description=str(product_store['description']),
+                price=float(product_store['price']),
+                quantity=int(product_store['quantity'])
+            )
+        except KeyError as e:
+            raise ValueError(f"Отсутсвует обязательное поле: {e.args[0]}")
+        except (TypeError, ValueError) as e:
+            raise ValueError(f"Некорректный тип данных: {e}")
 
 
 class Category:
