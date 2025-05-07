@@ -6,7 +6,7 @@ class Product:
 
     name: str
     description: str
-    price: float
+    __price: float
     quantity: int
 
     def __init__(self, name, description, price, quantity):
@@ -31,6 +31,21 @@ class Product:
             raise ValueError(f"Отсутсвует обязательное поле: {e.args[0]}")
         except (TypeError, ValueError) as e:
             raise ValueError(f"Некорректный тип данных: {e}")
+
+
+    @property
+    def price(self):
+        """Геттер для получения цены товара"""
+        return self.__price
+
+
+    @price.setter
+    def price(self, new_price):
+        """Сеттер, который останавливает вывод нулевой цены"""
+        if new_price <= 0:
+            raise ValueError("Цена не должна быть нулевая или отрицательная")
+        else:
+            self.__price = new_price
 
 
 class Category:
