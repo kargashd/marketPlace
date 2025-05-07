@@ -32,7 +32,6 @@ class Category:
         Category.product_count += len(products)
 
 
-
     def add_products(self, product: Product):
         """Добавляет товар Product в приватный список __product"""
         if not isinstance(product, Product):
@@ -41,7 +40,10 @@ class Category:
         Category.product_count += 1
 
 
-
-
-
-
+    @property
+    def products(self):
+        """Геттер для вывода списка товаров"""
+        prod_str = ''
+        for prod in self.__products:
+            prod_str += f'{prod.name},{prod.price} руб, Остаток: {prod.quantity}\n'
+        return prod_str
