@@ -4,7 +4,7 @@ from src.main import Product, Category
 
 @pytest.fixture
 def first_prod():
-    """Фикстура для теста класса первого продукта"""
+    """Фикстура для тестов класса первого продукта"""
     return Product(
         name = "Микроволновка",
         description = "Микроволновая печь, предназначенная для подогрева пищи",
