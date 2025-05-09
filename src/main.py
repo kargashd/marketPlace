@@ -16,28 +16,25 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
-
     @classmethod
-    def new_product(cls, product_store: dict) -> 'Product':
+    def new_product(cls, product_store: dict) -> "Product":
         """Класс-метод для создания товара из словаря с параметрами класса Product"""
         try:
             return cls(
-                name=str(product_store['name']),
-                description=str(product_store['description']),
-                price=float(product_store['price']),
-                quantity=int(product_store['quantity'])
+                name=str(product_store["name"]),
+                description=str(product_store["description"]),
+                price=float(product_store["price"]),
+                quantity=int(product_store["quantity"]),
             )
         except KeyError as e:
-            raise ValueError(f"Отсутсвует обязательное поле: {e.args[0]}")
+            raise ValueError(f"Отсутствует обязательное поле: {e.args[0]}")
         except (TypeError, ValueError) as e:
             raise ValueError(f"Некорректный тип данных: {e}")
-
 
     @property
     def price(self):
         """Геттер для получения цены товара"""
         return self.__price
-
 
     @price.setter
     def price(self, new_price):
@@ -65,7 +62,6 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-
     def add_products(self, product: Product):
         """Добавляет товар Product в приватный список __product"""
         if not isinstance(product, Product):
@@ -73,11 +69,10 @@ class Category:
         self.__products.append(product)
         Category.product_count += 1
 
-
     @property
     def products(self):
         """Геттер для вывода списка товаров"""
-        prod_str = ''
+        prod_str = ""
         for prod in self.__products:
-            prod_str += f'{prod.name},{prod.price} руб, Остаток: {prod.quantity}\n'
+            prod_str += f"{prod.name},{prod.price} руб, Остаток: {prod.quantity}\n"
         return prod_str
